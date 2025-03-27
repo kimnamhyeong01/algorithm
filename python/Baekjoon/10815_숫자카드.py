@@ -1,10 +1,19 @@
 from collections import deque
 N = int(input()) 
 answer = deque([])
-s1 = deque(map(int, input().split())) 
+s1 = set(map(int, input().split())) 
 M = int(input()) 
-s2 = deque(map(int, input().split())) 
+s2 = list(map(int, input().split())) #list와 set의 차이: list는 입력 순서를 보장해주지만, set은 입력 순서를 보장해주지 않음. 그래서 s2를 set으로 바꿔서 실행시키면 원하는 결과를 얻을 수 없어서 s2는 list로 구현.
 
+for i in s2:
+    if i in s1:
+        print(1, end = " ") 
+    else:
+        print(0, end = " ")
+
+
+"""
+----기존 이중 for문으로 구현한 부분 > 답은 맞으나 테스트 케이스 크기가 늘어나면 시간 초과----
 for i in range(len(s2)):
     answer.append(0)
     for j in range(len(s1)):
@@ -15,7 +24,9 @@ for i in range(len(s2)):
            break 
         else:
             pass 
-print(*answer) 
+print(*answer)
+"""
+ 
 
  
 # 사이트에 제시된 테스트 케이스는 정답 맞췄음. 근데 이중 for문을 써서, 백준 사이트 테스트에서 시간 초과 뜨는 듯함. 이중 for문을 제거한 코드를 생각해 봐야 할 듯.  
