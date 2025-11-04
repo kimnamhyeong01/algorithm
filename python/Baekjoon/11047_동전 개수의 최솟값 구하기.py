@@ -1,26 +1,13 @@
-import time 
-start_time = time.time()
+N, K = map(int, input().split()) 
+A = [0] * N
+for i in range(N):
+    A[i] = int(input()) 
 
-n, k = input().split() 
-n = int(n)
-k = int(k)
-a = [] 
-sum = 0 
 count = 0
 
-for i in range(n):
-    temp = int(input())
-    a.append(temp)  
+for j in range(N - 1, -1, -1):
+    if A[j] <= K:
+        count += int(K/A[j])
+        K = K % A[j]
 
-for j in a[::-1]:
-    if j <= k:
-        div = int(k / j) 
-        count += div
-        k = k - div * j
-    if k == 0:
-        break
-
-print(count) 
-
-end_time = time.time() 
-print("시간:", end_time - start_time)
+print(count)
