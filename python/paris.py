@@ -17,4 +17,4 @@ for i in range(N - M + 1):
                 total += arr[i + x][j + y] 
 
         max_kill = max(max_kill, total)
-print(f"#{t} {max_kill}")
+
